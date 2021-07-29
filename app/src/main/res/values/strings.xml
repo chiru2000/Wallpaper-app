@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Best wallpaper</string>
+    <string name="seach_wallpaper">Seach</string>
+    <string name="download_button">download</string>
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/Theme.BestWall"
+    tools:context=".MainActivity">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_margin="10dp"
+      android:id="@+id/idLLsearch"
+
+      android:focusable="true"
+      android:focusableInTouchMode="true"
+      android:weightSum="4"
+      android:alpha="255" >
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3.5"
+        android:id="@+id/idEditsearch"
+        android:background="@drawable/search_back"
+        android:hint="@string/seach_wallpaper"
+        android:textColorHint="@color/material_on_surface_stroke"
+        android:padding="8dp"
+        android:singleLine="true"
+        tools:ignore="Suspicious0dp" />
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:layout_gravity="center"
+        android:padding="4dp"
+        android:src="@drawable/ic_baseline_search_24"
+        android:layout_centerInParent="true"
+        android:id="@+id/idImageIcon"
+        tools:ignore="Suspicious0dp" />
+
+
+  </LinearLayout>
+  <androidx.recyclerview.widget.RecyclerView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+    android:orientation="horizontal"
+      android:layout_below="@id/idLLsearch"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    android:id="@+id/idRVCategory"
+    android:layout_marginTop="3dp"/>
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/idRVWallpapers"
+
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@+id/idRVCategory" />
+
+  <ProgressBar
+      android:layout_width="wrap_content"
+      android:layout_height="9dp"
+      android:id="@+id/idPBLoading"
+      android:layout_centerInParent="true"
+      android:visibility="gone" />
+
+</RelativeLayout>

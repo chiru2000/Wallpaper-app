@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bestwall">
+
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/baseline_format_paint_24"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/baseline_format_paint_24"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BestWall">
+        <activity android:name="com.example.bestwall.WallpaperActivity"></activity>
+        <activity android:name="com.example.bestwall.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
