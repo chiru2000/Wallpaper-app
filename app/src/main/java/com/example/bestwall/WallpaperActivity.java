@@ -33,6 +33,7 @@ WallpaperActivity extends AppCompatActivity {
 
      ImageView wallpaperIV;
      Button setBtnWallpaper;
+     Button dlbutton;
      String url;
      private ProgressBar loadingwallpaperPB;
     WallpaperManager wallpaperManager;
@@ -42,6 +43,7 @@ WallpaperActivity extends AppCompatActivity {
 
         setBtnWallpaper = findViewById(R.id.idbtnsetWallpaper);
         loadingwallpaperPB = findViewById(R.id.idWallpaperPB);
+        dlbutton = findViewById(R.id.iddlbutton);
         url = getIntent().getStringExtra("imgUrl");
 //        Toast.makeText(getApplicationContext(), (CharSequence) url , Toast.LENGTH_SHORT).show();
         if (url != null) {
@@ -83,6 +85,26 @@ WallpaperActivity extends AppCompatActivity {
                         }
                     }).submit();
                     FancyToast.makeText(WallpaperActivity.this, "Wallpaper set to homeScreen", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
+                }
+            });
+            dlbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String getUrl = url.toString();
+                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(getUrl));
+                    String title = URLUtil.guessFileName(url,null,null);
+                    request.setTitle(title);
+                    request.setDescription("Downloading...");
+                    String cookie = CookieManager.getInstance().getCookie(getUrl);
+                    request.addRequestHeader("cookie",cookie);
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,title);
+
+                    DownloadManager downloadManager = (DownloadManager)getSystemService(DOWNLOAD_SERVICE);
+                    downloadManager.enqueue(request);
+
+                    Toast.makeText(WallpaperActivity.this,"Download Started",Toast.LENGTH_SHORT).show();
+
                 }
             });
 
